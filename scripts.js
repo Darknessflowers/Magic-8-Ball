@@ -1,9 +1,29 @@
-const ball = document.querySelector('#ball');
+const ball = document.querySelector('.ball');
+const heading = document.querySelector('h1');
 const submit = document.querySelector('.askQuestion');
 const input = document.querySelector('.askMe');
+const displayWhite = document.querySelector('.inner');
+const display = document.querySelector('.inner p');
+
+function wait(ms=2000) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
 //shake ball
-function shake() {
-  ball.classList.add('animate__animated', 'animate__animate__headShake');
+async function shake() {
+  if(display.classList.contains('opacity')) {
+    display.classList.remove('opacity');
+  }
+  ball.classList.add('animate__animated','animate__headShake');
+  await wait(400);
+  display.classList.add('opacity');
+  display.innerHTML = 'Yes'; 
+
+  ball.addEventListener('animationend', function() {
+    ball.classList.remove('animate__animated','animate__headShake');
+  },
+  { once: true });
 }
 
 function handleSubmit(e) {
@@ -11,7 +31,9 @@ function handleSubmit(e) {
   shake();
 }
 
-ball.addEventListener('click', handleSubmit);
+// ball.addEventListener('click', shake);
+heading.addEventListener('click', shake);
+
 
 //user types into input box 
 //user either clickes submit or submit is triggered with enter key
