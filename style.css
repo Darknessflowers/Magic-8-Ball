@@ -18,7 +18,7 @@ body {
   align-items: center;
 }
 .wrap {
-  min-width: 90%;
+  /* min-width: 90%; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,16 +58,17 @@ h1 {
   font-size: 25px;
   text-transform: uppercase;
   opacity: 0;
+  text-align: center;
 }
 .inner p.opacity {
-  animation: opacity 3s forwards 1;
+  animation: opacity 2s forwards 1;
 }
 .ball.shake {
   animation: shaker 2s linear 1;
   /* animation: opacity 3s forwards 1; */
 }
 .question {
-  margin-top: 25px;
+  margin-top: 50px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -95,30 +96,12 @@ button {
   font-size: 16px;
 }
 
+#askMe:focus {
+  outline: none;
+  box-shadow: inset 1px 1px 2px 2px #f5ae1954;
+}
+
 /* Animations */
-
-/* @keyframes shake {
-  10%,
-  90% {
-    transform: translate3d(-2px, 0, 0);
-  }
-
-  20%,
-  80% {
-    transform: translate3d(2px, 0, 0);
-  }
-
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-8px, 0, 0);
-  }
-
-  40%,
-  60% {
-    transform: translate3d(8px, 0, 0);
-  }
-} */
 
 @keyframes opacity {
   0% {
@@ -130,17 +113,4 @@ button {
     transform: scale(1);
   }
 
-}
-
-@keyframes shaker {
-  0% {
-    transform: translateX(0px);
-  }
-  50% {
-
-    transform: translateX(10px);  
-  }
-  100% {
-    transform: translateX(0px);
-  }
 }

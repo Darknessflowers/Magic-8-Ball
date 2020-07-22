@@ -1,15 +1,42 @@
 const ball = document.querySelector('.ball');
-const heading = document.querySelector('h1');
 const submit = document.querySelector('.askQuestion');
-const input = document.querySelector('.askMe');
-const displayWhite = document.querySelector('.inner');
+const question = document.querySelector('.question');
+const inputQuestion = document.querySelector('#askMe');
 const display = document.querySelector('.inner p');
-
+const magicValues = [
+  'It is certain.',
+  'It is decidedly so.',
+  'Without a doubt.',
+  'Yes – definitely.',
+  'You may rely on it.',
+  'As I see it, yes.',
+  'Most likely.',
+  'Outlook good.',
+  'Yes.',
+  'Signs point to yes.',
+  'Reply hazy, try again.',
+  'Ask again later.',
+  'Better not tell you now.',
+  'Cannot predict now.',
+  'Concentrate and ask again.',
+  'Don\'t count on it.',
+  'My reply is no.',
+  'My sources say no.',
+  'Outlook not so good.',
+  'Very doubtful.'
+]
 function wait(ms=2000) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 }
+
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+}
+
 //shake ball
 async function shake() {
   if(display.classList.contains('opacity')) {
@@ -17,8 +44,10 @@ async function shake() {
   }
   ball.classList.add('animate__animated','animate__headShake');
   await wait(400);
+  let ranNum = getRandomIntInclusive(1, 20); 
+
+  display.innerHTML = magicValues[ranNum-1]; 
   display.classList.add('opacity');
-  display.innerHTML = 'Yes'; 
 
   ball.addEventListener('animationend', function() {
     ball.classList.remove('animate__animated','animate__headShake');
@@ -28,19 +57,14 @@ async function shake() {
 
 function handleSubmit(e) {
   e.preventDefault();
+  question.reset();
   shake();
 }
 
-// ball.addEventListener('click', shake);
-heading.addEventListener('click', shake);
+function focus() {
+  console.log(inputQuestion);
+  inputQuestion.focus();
+}
 
-
-//user types into input box 
-//user either clickes submit or submit is triggered with enter key
-
-//shake animation is triggered (takes same length of time as delay)
-//random number is generated between 1 and 20
-//Delay answer by 2 seconds
-//trigger animation that starts at scale of 0.2 and 0 opacity and transitions to regular opacity and scale
-// corresponding answer is displayed
-//clear input
+window.addEventListener('load', focus);
+submit.addEventListener('click', handleSubmit);
