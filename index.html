@@ -5,11 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/kzn1tfo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
   <title>Magic 8 Ball</title>
+  </div>
 </head>
 
 <body>
   <h1>Magic<span class="bigNum">8</span>Ball</h1>
+  <div class="wrap">
+    <div id="ball">
+      <ball class="inner">
+        <p class="destiny">It is certain.</p>
+      </ball>
+    </div>
+    <div class="question">
+      <form class="question" autocomplete="off">
+        <input type="text" name="askMe" id="askMe" placeholder="What is it you desire to know?" required>
+        <button class="askQuestion" type="submit">Ask Me</button>
+      </form>
+    </div>
+  </div>
+
   <script src="./scripts.js"></script>
 </body>
 
