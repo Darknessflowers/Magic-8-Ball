@@ -133,6 +133,12 @@ button {
   inner p {
     font-size: 22px;
   }
+  body {
+    height: auto;
+  }
+  h1 {
+    margin-top: 20px;
+  }
 }
 
 /* Animations */
